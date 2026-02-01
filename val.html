@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1; /* Romantic light pink */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 { color: #d63384; }
+
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #6c757d;
+            color: white;
+            position: absolute;
+            left: 60%; /* Allows it to move freely */
+        }
+
+        #success {
+            display: none;
+        }
+
+        img {
+            max-width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 5px solid #ff4d6d;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="question-box">
+            <h1>Hey Penguin, Will you be my Valentine? ❤️</h1>
+            <div class="btn-container">
+                <button id="yesBtn" onclick="showSuccess()">YES!</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="success">
+            <h1>Yay! I'm the luckiest! 😍</h1>
+            <p class="quote">"Valentine's Day is just another day to show you how much I love you, but let's make it official."</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionBox = document.getElementById('question-box');
+        const successBox = document.getElementById('success');
+
+        // Function to move the "No" button
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (1000 - noBtn.offsetWidth);
+            const y = Math.random() * (500 - noBtn.offsetHeight);
+            
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        // Function when "Yes" is clicked
+        function showSuccess() {
+            questionBox.style.display = 'none';
+            successBox.style.display = 'block';
+            
+            // Optional: Launch some confetti or change background
+            document.body.style.backgroundColor = "#ffccd5";
+        }
+    </script>
+</body>
+</html>
